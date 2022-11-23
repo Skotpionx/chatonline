@@ -11,7 +11,6 @@ if($_SESSION['user']->getName() !=""){
 
 if(isset($_POST['logeo'])){
     if(userRepository::exists($_POST['user'])){
-        var_dump("HOLAA");
         if(isset($_POST['user']) && isset($_POST['password'])){
             var_dump("ADIOS");
             if(userRepository::login($_POST['user'], $_POST['password'])){
@@ -25,7 +24,7 @@ if(isset($_POST['logeo'])){
 }
 if(isset($_POST['registro'])){
         if($_FILES['img']['name'] == ''  ){
-            $imagen = 'minion.jpg';
+            $imagen = 'minion.png';
         }else{
             $ruta= 'views/img/';
             $imagen = basename($_FILES['img']['name']);

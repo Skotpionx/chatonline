@@ -6,6 +6,8 @@ require_once('models/userRepository.php');
 require_once('models/messageModel.php');
 require_once('models/messageRepository.php');
 $roomMessages = MessageRepository::getRoomMessages(1);
+$allUsers = UserRepository::getAllUsers();
+//sala chat , falso online, lista usuarios
 session_start();
 
 
