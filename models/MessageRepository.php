@@ -39,17 +39,21 @@
                 $qMessages = "SELECT `date` FROM `message` WHERE iduser = $iduser ORDER BY DATE DESC LIMIT 1";
                 $result = $db-> query($qMessages);
                 $resultado = $result->fetch_assoc();
-                $resultados = explode(" ",$resultado['date']);
-                $resultadotres = explode(":",$resultados[1]);
-                return $resultadotres;
+                if($resultado !=null){
+                    $resultados = explode(" ",$resultado['date']);
+                    $resultadotres = explode(":",$resultados[1]);
+                    return $resultadotres;
+                }
             }
         }
 
         public static function getSeconds($time){
-            $hours = $time[0]*60*60;
-            $minutes = $time[1]*60;
-            $seconds = $time[2];
-            return $hours+$minutes+$seconds;
+            if($time != null){
+                $hours = $time[0]*60*60;
+                $minutes = $time[1]*60;
+                $seconds = $time[2];
+                return $hours+$minutes+$seconds;
+            }
         }
 
         public static function getTimeNow(){
