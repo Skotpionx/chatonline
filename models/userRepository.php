@@ -103,5 +103,16 @@
         $db=Conectar::conexion();        
         $result= $db->query("UPDATE users SET activated='0' WHERE id='".$id."'");         
     } 
+
+    public static function calculateStatus($iduser){
+        $db = Conectar::conexion();
+        $value = 0;
+        $time = MessageRepository::getSeconds(MessageRepository::getLastTimeMessage($iduser));
+        $timenow = MessageRepository::getTimeNow();
+        if( $timenow-$time <= 300 ){
+            $value = 1;
+        }
+        UserRepository::changeStatus($value);
+    }
 }
 ?>
