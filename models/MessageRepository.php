@@ -18,13 +18,13 @@
             }
         }
 
-        public static function sendMessage($content){
+        public static function sendMessage($content, $room){
             $db = Conectar::conexion();
             if(!$db){
                 $error = "No se ha podido conectar a la base de datos";
             }
             else{
-                $qMessages = "INSERT INTO `message`  (content,iduser,idroom,activated, `date` )  VALUES('".$content."', '".$_SESSION['user']->getID()."', 1,1,NOW()  ) ";
+                $qMessages = "INSERT INTO `message`  (content,iduser,idroom,activated, `date` )  VALUES('".$content."', '".$_SESSION['user']->getID()."','".$room."',1,NOW()  ) ";
                 $result = $db-> query($qMessages);
                 return true;
             }

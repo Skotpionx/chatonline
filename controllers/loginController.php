@@ -8,7 +8,6 @@ if(isset($_GET['logout'])){
 if($_SESSION['user']->getName() !=""){
     header('Location: index.php');
 }
-
 if(isset($_POST['logeo'])){
     if(userRepository::exists($_POST['user'])){
         if(isset($_POST['user']) && isset($_POST['password'])){

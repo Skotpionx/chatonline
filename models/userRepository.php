@@ -88,6 +88,20 @@
             return true;
         }
     }
-
+    public static function goAdmin($id){
+        $db= Conectar::conexion();
+        $q="UPDATE `users` SET `rol` = '1' WHERE `users`.`id` = $id";
+        $db->query($q); 
+    }
+    
+    public static function revokeAdmin($id){
+        $db= Conectar::conexion();
+        $q="UPDATE `users` SET `rol` = '0' WHERE `users`.`id` = $id";
+        $db->query($q); 
+    }
+    public static function deleteUser($id){
+        $db=Conectar::conexion();        
+        $result= $db->query("UPDATE users SET activated='0' WHERE id='".$id."'");         
+    } 
 }
 ?>

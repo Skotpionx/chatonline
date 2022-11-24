@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 23-11-2022 a las 22:17:51
--- Versión del servidor: 10.4.24-MariaDB
--- Versión de PHP: 8.1.6
+-- Tiempo de generación: 24-11-2022 a las 11:06:22
+-- Versión del servidor: 10.4.21-MariaDB
+-- Versión de PHP: 8.0.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -55,7 +55,9 @@ CREATE TABLE `message` (
 INSERT INTO `message` (`id`, `content`, `iduser`, `idroom`, `activated`, `date`) VALUES
 (9, 'HOLA', 14, 1, 1, '2022-11-23 20:25:00'),
 (10, 'HOLA JUANMI', 5, 1, 1, '2022-11-23 20:25:08'),
-(11, 'Adios JUanmi', 5, 1, 1, '2022-11-23 20:26:47');
+(11, 'Adios JUanmi', 5, 1, 1, '2022-11-23 20:26:47'),
+(42, 'hola', 5, 2, 1, '2022-11-24 00:51:20'),
+(43, 'adios Juanmi', 5, 1, 1, '2022-11-24 00:51:31');
 
 -- --------------------------------------------------------
 
@@ -65,15 +67,18 @@ INSERT INTO `message` (`id`, `content`, `iduser`, `idroom`, `activated`, `date`)
 
 CREATE TABLE `room` (
   `id` int(11) NOT NULL,
-  `privated` tinyint(1) NOT NULL DEFAULT 0
+  `privated` tinyint(1) NOT NULL DEFAULT 0,
+  `name` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `room`
 --
 
-INSERT INTO `room` (`id`, `privated`) VALUES
-(1, 0);
+INSERT INTO `room` (`id`, `privated`, `name`) VALUES
+(1, 0, 'Sala 1 Jiji'),
+(2, 1, 'Saluski 2 Super OmegaChetada Cambiada de nombre'),
+(3, 0, 'Sala 3 creada a traves de la web ');
 
 -- --------------------------------------------------------
 
@@ -99,8 +104,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `password`, `email`, `rol`, `activated`, `vip`, `birthday`, `img`, `status`) VALUES
-(5, 'ivan', '2c42e5cf1cdbafea04ed267018ef1511', 'ivan@gmail.com', 0, 1, 0, '2022-11-12', 'Vani.jpg', 0),
-(14, 'juanmi', 'bd91949d7028b7570eb283a0829557d4', 'juanmi@gmail.com', 0, 1, 0, '2003-09-15', 'minion.png', 1);
+(5, 'ivan', '2c42e5cf1cdbafea04ed267018ef1511', 'ivan@gmail.com', 1, 1, 0, '2022-11-12', 'Vani.jpg', 1),
+(14, 'juanmi', 'bd91949d7028b7570eb283a0829557d4', 'juanmi@gmail.com', 0, 1, 0, '2003-09-15', 'minion.png', 1),
+(19, 'pepe', '926e27eecdbc7a18858b3798ba99bddd', 'pepe@pepe.com', 0, 0, 0, '3212-02-12', 'minion.png', 1);
 
 --
 -- Índices para tablas volcadas
@@ -148,19 +154,19 @@ ALTER TABLE `contain`
 -- AUTO_INCREMENT de la tabla `message`
 --
 ALTER TABLE `message`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- AUTO_INCREMENT de la tabla `room`
 --
 ALTER TABLE `room`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- Restricciones para tablas volcadas
