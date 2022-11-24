@@ -24,6 +24,7 @@ if(!isset($_SESSION['user'])){
     $_SESSION['user'] = new User($datos);
 }
 
+UserRepository::getAllUsers();
 
 if(isset($_GET['sala'])){
     UserRepository::calculateStatus($_SESSION['user']->getID());
